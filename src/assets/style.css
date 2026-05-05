@@ -648,7 +648,7 @@ body.loaded #preloader {
 }
 
 .cta-container {
-    background: url('ac.jpeg') center/cover no-repeat;
+    background: url('/ac.jpeg') center/cover no-repeat;
     border-radius: 1.5rem;
     position: relative;
     overflow: hidden;

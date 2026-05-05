@@ -1,0 +1,247 @@
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const isLoaded = ref(false)
+const isScrolled = ref(false)
+const isMenuOpen = ref(false)
+
+const handleScroll = () => {
+    isScrolled.value = window.scrollY > 50
+}
+
+const toggleMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value
+}
+
+const closeMenu = () => {
+    isMenuOpen.value = false
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+    // Simulate slight delay for preloader to ensure assets are ready
+    setTimeout(() => {
+        isLoaded.value = true
+        document.body.classList.add('loaded')
+    }, 500)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+})
+</script>
+
+<template>
+    <!-- Preloader -->
+    <div id="preloader" :class="{ hidden: isLoaded }">
+        <img src="/logo2.png" alt="Loading Multi Jaya Teknik..." class="preloader-logo">
+    </div>
+
+    <!-- Navbar -->
+    <header class="navbar" :class="{ 'navbar-scrolled': isScrolled }">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="/logo2.png" alt="Multi Jaya Teknik Logo" class="logo-img">
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle Menu" @click="toggleMenu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="nav-links" :class="{ 'active': isMenuOpen }">
+                <a href="#beranda" @click="closeMenu">Beranda</a>
+                <a href="#layanan" @click="closeMenu">Layanan</a>
+                <a href="#testimoni" @click="closeMenu">Testimoni</a>
+                <a href="#kontak" class="btn btn-primary nav-cta" @click="closeMenu">Panggil Teknisi</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-shape-1"></div>
+        <div class="hero-shape-2"></div>
+        
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge">
+                    <span class="pulse-dot"></span> PANGGILAN 24 JAM
+                </div>
+                <h1>SOLUSI CEPAT <br><span class="highlight">AC KEMBALI DINGIN!</span></h1>
+                <div class="quote-box">
+                    <p><em>"AC Anda cuma keluar angin tapi nggak dingin? Sama kayak dia, cuma kasih harapan tapi nggak ada kepastian."</em></p>
+                    <p class="quote-highlight"><strong>PANGGIL MULTI JAYA TEKNIK!</strong></p>
+                </div>
+                <div class="service-area-badge">
+                    <div class="area-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <div class="area-text">
+                        <span>Cakupan Layanan 24 Jam:</span>
+                        <strong>Denpasar, Kuta, Canggu, Jimbaran & Sekitarnya</strong>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#kontak" class="btn btn-primary btn-large">Hubungi Sekarang <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#layanan" class="btn btn-secondary btn-large">Lihat Layanan <i class="fa-solid fa-arrow-down"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <img src="/ac.jpeg" alt="Teknisi AC Multi Jaya Teknik" id="hero-img" />
+                    
+                    <div class="floating-card card-1">
+                        <i class="fa-solid fa-star text-yellow"></i>
+                        <div>
+                            <strong>4.9/5</strong>
+                            <span>Rating Pelanggan</span>
+                        </div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fa-solid fa-stopwatch text-blue"></i>
+                        <div>
+                            <strong>24 Jam</strong>
+                            <span>Siap Datang</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="custom-shape-divider-bottom-1683100000">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.3,201.3,114.13c40.3-4.14,79.5-12.78,120.09-21.69Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Layanan Multi Jaya Teknik</h2>
+                <p>Kami memiliki tenaga ahli profesional untuk mengatasi semua masalah pendingin ruangan Anda dengan cepat dan transparan.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="/spray-ac.jpeg" alt="Cuci AC" class="service-img" loading="lazy">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-tools"></i></div>
+                        <h3>Cuci & Perawatan AC</h3>
+                        <p>Cuci AC rutin agar udara kembali bersih, segar, dan dingin maksimal. Mencegah kerusakan.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="/inside-ac.jpeg" alt="Pasang AC" class="service-img" loading="lazy">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-wrench"></i></div>
+                        <h3>Pasang & Bongkar AC</h3>
+                        <p>Pemasangan AC baru atau pemindahan unit lama dengan instalasi yang rapi dan aman.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="/freon.jpeg" alt="Isi Freon" class="service-img" loading="lazy">
+                    <div class="service-content">
+                        <div class="service-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                        <h3>Isi Freon</h3>
+                        <p>Pengisian freon sesuai standar tekanan pabrik agar performa pendinginan kembali optimal.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content no-img-top">
+                        <div class="service-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3>Perawatan Berkala</h3>
+                        <p>Kontrak service berkala untuk kantor, rumah, atau instansi agar AC lebih awet.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content no-img-top">
+                        <div class="service-icon"><i class="fa-solid fa-cogs"></i></div>
+                        <h3>Dan Lain-Lain</h3>
+                        <p>Perbaikan AC bocor, mati total, penggantian sparepart, dan keluhan lainnya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section id="testimoni" class="testimonials">
+        <div class="container">
+            <div class="section-header light-header">
+                <h2>Apa Kata Pelanggan Kami?</h2>
+                <p>Kepuasan Anda adalah prioritas utama Multi Jaya Teknik.</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"AC di vila daerah Kuta tiba-tiba mati tengah malam. Untung ada Multi Jaya Teknik yang siap dipanggil 24 jam. Teknisi datang cepat, langsung dingin lagi!"</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">B</div>
+                        <div class="reviewer-info">
+                            <strong>Bapak Budi</strong>
+                            <span>Owner Vila, Kuta</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">"Pelayanan sangat memuaskan dan transparan. Nggak ada biaya tersembunyi. Cuci AC sangat bersih sampai ke sela-sela. Rekomen banget buat warga Denpasar."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">I</div>
+                        <div class="reviewer-info">
+                            <strong>Ibu Sari</strong>
+                            <span>Ibu Rumah Tangga, Denpasar</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="review-text">"Langganan tetap kantor kami untuk service berkala bulanan. Teknisi ramah, profesional, dan kerjanya cepat. Sukses terus Multi Jaya Teknik!"</p>
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">A</div>
+                        <div class="reviewer-info">
+                            <strong>Agus T.</strong>
+                            <span>Manager Operasional, Jimbaran</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="kontak" class="cta-section">
+        <div class="container cta-container">
+            <div class="cta-content">
+                <h2>Tunggu Apa Lagi?</h2>
+                <p class="cta-subtitle">Klik tombol di bawah, AC dingin seketika!</p>
+                
+                <a href="https://wa.me/6282143196216" target="_blank" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <div class="wa-text">
+                        <span>Hubungi via WhatsApp</span>
+                        <strong>0821 4319 6216</strong>
+                    </div>
+                </a>
+                
+                <p class="response-time"><i class="fa-solid fa-bolt"></i> Siap Meluncur ke Lokasi Anda di Denpasar & Sekitarnya</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <img src="/logo2.png" alt="Multi Jaya Teknik Logo" class="footer-logo-img">
+            </div> 
+            <p>&copy; 2026 Multi Jaya Teknik. Melayani Servis AC Area Denpasar, Kuta, Jimbaran. All rights reserved.</p>
+        </div>
+    </footer>
+</template>
