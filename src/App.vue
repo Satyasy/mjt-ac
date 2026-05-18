@@ -34,14 +34,14 @@ onUnmounted(() => {
 <template>
     <!-- Preloader -->
     <div id="preloader" :class="{ hidden: isLoaded }">
-        <img src="/logo2.png" alt="Loading Multi Jaya Teknik..." class="preloader-logo">
+        <img src="/logo2.png" alt="Loading Berkah Jaya Teknik..." class="preloader-logo">
     </div>
 
     <!-- Navbar -->
     <header class="navbar" :class="{ 'navbar-scrolled': isScrolled }">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="/logo2.png" alt="Multi Jaya Teknik Logo" class="logo-img">
+                <img src="/logo2.png" alt="Berkah Jaya Teknik Logo" class="logo-img">
             </a>
             <button class="mobile-toggle" aria-label="Toggle Menu" @click="toggleMenu">
                 <i class="fa-solid fa-bars"></i>
@@ -69,7 +69,7 @@ onUnmounted(() => {
                 <h1>SOLUSI CEPAT <br><span class="highlight">AC KEMBALI DINGIN!</span></h1>
                 <div class="quote-box">
                     <p><em>"AC Anda cuma keluar angin tapi nggak dingin? Sama kayak dia, cuma kasih harapan tapi nggak ada kepastian."</em></p>
-                    <p class="quote-highlight"><strong>PANGGIL MULTI JAYA TEKNIK!</strong></p>
+                    <p class="quote-highlight"><strong>PANGGIL BERKAH JAYA TEKNIK!</strong></p>
                 </div>
                 <div class="service-area-badge">
                     <div class="area-icon"><i class="fa-solid fa-map-location-dot"></i></div>
@@ -85,7 +85,7 @@ onUnmounted(() => {
             </div>
             <div class="hero-image">
                 <div class="image-wrapper">
-                    <img src="/ac.jpeg" alt="Teknisi AC Multi Jaya Teknik" id="hero-img" />
+                    <img src="/ac.jpeg" alt="Teknisi AC Berkah Jaya Teknik" id="hero-img" />
                     
                     <div class="floating-card card-1">
                         <i class="fa-solid fa-star text-yellow"></i>
@@ -116,7 +116,7 @@ onUnmounted(() => {
     <section id="layanan" class="services">
         <div class="container">
             <div class="section-header">
-                <h2>Layanan Multi Jaya Teknik</h2>
+                <h2>Layanan Berkah Jaya Teknik</h2>
                 <p>Kami memiliki tenaga ahli profesional untuk mengatasi semua masalah pendingin ruangan Anda dengan cepat dan transparan.</p>
             </div>
             
@@ -168,7 +168,7 @@ onUnmounted(() => {
         <div class="container">
             <div class="section-header light-header">
                 <h2>Apa Kata Pelanggan Kami?</h2>
-                <p>Kepuasan Anda adalah prioritas utama Multi Jaya Teknik.</p>
+                <p>Kepuasan Anda adalah prioritas utama Berkah Jaya Teknik.</p>
             </div>
             
             <div class="testimonial-grid">
@@ -176,7 +176,7 @@ onUnmounted(() => {
                     <div class="stars">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="review-text">"AC di vila daerah Kuta tiba-tiba mati tengah malam. Untung ada Multi Jaya Teknik yang siap dipanggil 24 jam. Teknisi datang cepat, langsung dingin lagi!"</p>
+                    <p class="review-text">"AC di vila daerah Kuta tiba-tiba mati tengah malam. Untung ada Berkah Jaya Teknik yang siap dipanggil 24 jam. Teknisi datang cepat, langsung dingin lagi!"</p>
                     <div class="reviewer">
                         <div class="reviewer-avatar">B</div>
                         <div class="reviewer-info">
@@ -202,7 +202,7 @@ onUnmounted(() => {
                     <div class="stars">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
                     </div>
-                    <p class="review-text">"Langganan tetap kantor kami untuk service berkala bulanan. Teknisi ramah, profesional, dan kerjanya cepat. Sukses terus Multi Jaya Teknik!"</p>
+                    <p class="review-text">"Langganan tetap kantor kami untuk service berkala bulanan. Teknisi ramah, profesional, dan kerjanya cepat. Sukses terus Berkah Jaya Teknik!"</p>
                     <div class="reviewer">
                         <div class="reviewer-avatar">A</div>
                         <div class="reviewer-info">
@@ -230,7 +230,7 @@ onUnmounted(() => {
                     </div>
                 </a>
                 
-                <p class="response-time"><i class="fa-solid fa-bolt"></i> Siap Meluncur ke Lokasi Anda di Denpasar & Sekitarnya</p>
+                <p class="response-time"><i class="fa-solid fa-bolt"></i> Siap Meluncur ke Lokasi Anda di Denpasar, Kuta, Canggu, Jimbaran & Sekitarnya</p>
             </div>
         </div>
     </section>
@@ -239,9 +239,9 @@ onUnmounted(() => {
     <footer>
         <div class="container footer-container">
             <div class="footer-logo">
-                <img src="/logo2.png" alt="Multi Jaya Teknik Logo" class="footer-logo-img">
+                <img src="/logo2.png" alt="Berkah Jaya Teknik Logo" class="footer-logo-img">
             </div> 
-            <p>&copy; 2026 Multi Jaya Teknik. Melayani Servis AC Area Denpasar, Kuta, Jimbaran. All rights reserved.</p>
+            <p>&copy; 2026 Berkah Jaya Teknik. Melayani Servis AC Area Denpasar, Kuta, Jimbaran dan Sekitarnya. All rights reserved.</p>
         </div>
     </footer>
 </template>
