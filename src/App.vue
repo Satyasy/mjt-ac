@@ -17,17 +17,32 @@ const closeMenu = () => {
     isMenuOpen.value = false
 }
 
+let revealObserver = null
+
 onMounted(() => {
     window.addEventListener('scroll', handleScroll)
     // Simulate slight delay for preloader to ensure assets are ready
     setTimeout(() => {
         isLoaded.value = true
         document.body.classList.add('loaded')
-    }, 500)
+    }, 400)
+
+    // Smooth scroll-reveal: animasikan elemen saat masuk viewport
+    revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-in')
+                revealObserver.unobserve(entry.target)
+            }
+        })
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
+
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el))
 })
 
 onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll)
+    if (revealObserver) revealObserver.disconnect()
 })
 </script>
 
@@ -42,6 +57,7 @@ onUnmounted(() => {
         <div class="container nav-container">
             <a href="#" class="logo">
                 <img src="/logo2.png" alt="Berkah Jaya Teknik Logo" class="logo-img">
+                <span class="brand-name">Berkah Jaya <strong>Teknik</strong></span>
             </a>
             <button class="mobile-toggle" aria-label="Toggle Menu" @click="toggleMenu">
                 <i class="fa-solid fa-bars"></i>
@@ -62,7 +78,7 @@ onUnmounted(() => {
         <div class="hero-shape-2"></div>
         
         <div class="container hero-container">
-            <div class="hero-content">
+            <div class="hero-content reveal">
                 <div class="badge">
                     <span class="pulse-dot"></span> PANGGILAN 24 JAM
                 </div>
@@ -83,7 +99,7 @@ onUnmounted(() => {
                     <a href="#layanan" class="btn btn-secondary btn-large">Lihat Layanan <i class="fa-solid fa-arrow-down"></i></a>
                 </div>
             </div>
-            <div class="hero-image">
+            <div class="hero-image reveal">
                 <div class="image-wrapper">
                     <img src="/ac.jpeg" alt="Teknisi AC Berkah Jaya Teknik" id="hero-img" />
                     
@@ -115,13 +131,13 @@ onUnmounted(() => {
     <!-- Services Section -->
     <section id="layanan" class="services">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2>Layanan Berkah Jaya Teknik</h2>
                 <p>Kami memiliki tenaga ahli profesional untuk mengatasi semua masalah pendingin ruangan Anda dengan cepat dan transparan.</p>
             </div>
             
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card reveal">
                     <img src="/spray-ac.jpeg" alt="Cuci AC" class="service-img" loading="lazy">
                     <div class="service-content">
                         <div class="service-icon"><i class="fa-solid fa-tools"></i></div>
@@ -129,7 +145,7 @@ onUnmounted(() => {
                         <p>Cuci AC rutin agar udara kembali bersih, segar, dan dingin maksimal. Mencegah kerusakan.</p>
                     </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <img src="/inside-ac.jpeg" alt="Pasang AC" class="service-img" loading="lazy">
                     <div class="service-content">
                         <div class="service-icon"><i class="fa-solid fa-wrench"></i></div>
@@ -137,7 +153,7 @@ onUnmounted(() => {
                         <p>Pemasangan AC baru atau pemindahan unit lama dengan instalasi yang rapi dan aman.</p>
                     </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <img src="/freon.jpeg" alt="Isi Freon" class="service-img" loading="lazy">
                     <div class="service-content">
                         <div class="service-icon"><i class="fa-solid fa-gauge-high"></i></div>
@@ -145,14 +161,21 @@ onUnmounted(() => {
                         <p>Pengisian freon sesuai standar tekanan pabrik agar performa pendinginan kembali optimal.</p>
                     </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-content no-img-top">
                         <div class="service-icon"><i class="fa-solid fa-calendar-check"></i></div>
                         <h3>Perawatan Berkala</h3>
                         <p>Kontrak service berkala untuk kantor, rumah, atau instansi agar AC lebih awet.</p>
                     </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
+                    <div class="service-content no-img-top">
+                        <div class="service-icon"><i class="fa-solid fa-snowflake"></i></div>
+                        <h3>Servis AC Central & Cassette</h3>
+                        <p>Perawatan dan perbaikan AC central, cassette, dan standing untuk vila, hotel, kantor, dan ruko.</p>
+                    </div>
+                </div>
+                <div class="service-card reveal">
                     <div class="service-content no-img-top">
                         <div class="service-icon"><i class="fa-solid fa-cogs"></i></div>
                         <h3>Dan Lain-Lain</h3>
@@ -166,13 +189,13 @@ onUnmounted(() => {
     <!-- Testimonial Section -->
     <section id="testimoni" class="testimonials">
         <div class="container">
-            <div class="section-header light-header">
+            <div class="section-header light-header reveal">
                 <h2>Apa Kata Pelanggan Kami?</h2>
                 <p>Kepuasan Anda adalah prioritas utama Berkah Jaya Teknik.</p>
             </div>
             
             <div class="testimonial-grid">
-                <div class="review-card">
+                <div class="review-card reveal">
                     <div class="stars">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
@@ -185,7 +208,7 @@ onUnmounted(() => {
                         </div>
                     </div>
                 </div>
-                <div class="review-card">
+                <div class="review-card reveal">
                     <div class="stars">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
@@ -198,7 +221,7 @@ onUnmounted(() => {
                         </div>
                     </div>
                 </div>
-                <div class="review-card">
+                <div class="review-card reveal">
                     <div class="stars">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
                     </div>
@@ -218,7 +241,7 @@ onUnmounted(() => {
     <!-- CTA Section -->
     <section id="kontak" class="cta-section">
         <div class="container cta-container">
-            <div class="cta-content">
+            <div class="cta-content reveal">
                 <h2>Tunggu Apa Lagi?</h2>
                 <p class="cta-subtitle">Klik tombol di bawah, AC dingin seketika!</p>
                 
